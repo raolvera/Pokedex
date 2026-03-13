@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Pokédex Adventure 🪂</title>
+    <link rel="icon" href="pokeball.png" type="image/x-icon" />
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <h1>
+      <a href="https://fontmeme.com/pokemon-font/">
+        <img
+          src="https://fontmeme.com/permalink/250407/367d97eaa0785858afbfc4ebda92f1aa.png"
+          alt="Pokédex Title"
+          border="0"
+        />
+      </a>
+    </h1>
+    <div class="search-container">
+      <input type="text" id="pokemon-input" placeholder="Catch a Pokémon!" />
+      <button onclick="showPoke()">Search</button>
+    </div>
+    <div class="poke-display">
+      <img id="poke-mon" alt="Pokémon image" style="display: none" />
+      <div class="placeholder">Enter a Pokémon to begin!</div>
+    </div>
+    <div id="poke-info"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
