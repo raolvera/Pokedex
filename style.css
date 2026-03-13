@@ -1,0 +1,364 @@
+/* Import Pokémon Solid Font */
+@import url("https://fonts.cdnfonts.com/css/pokemon-solid");
+
+/* Global Reset & Pokémon Theme */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Pokemon Solid", sans-serif;
+  text-align: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #ff3333, #ffffff, #ffcc00);
+  min-height: 100vh;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Header with Spin Animation */
+h1 img {
+  max-width: 100%;
+  height: auto;
+  filter: drop-shadow(0 0 10px rgba(255, 204, 0, 0.8));
+  animation: spin 1s ease-out forwards; /* Spin on load */
+}
+
+/* Search Container */
+.search-container {
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+  max-width: 600px;
+}
+
+input {
+  padding: 10px;
+  font-size: 16px;
+  font-family: "Pokemon Solid", sans-serif;
+  border: 3px solid #333;
+  border-radius: 25px;
+  background: #fff;
+  color: #333;
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  animation: bounceIn 0.8s ease-out; /* Bounce on load */
+}
+
+input:focus {
+  outline: none;
+  border-color: #ffcc00;
+  box-shadow: 0 0 10px #ffcc00;
+  animation: none; /* Stop bounce when focused */
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  font-family: "Pokemon Solid", sans-serif;
+  background: #ff3333;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-transform: uppercase;
+  width: 150px;
+  animation: bounceIn 0.8s ease-out 0.2s; /* Bounce with delay */
+}
+
+button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(255, 51, 51, 0.7);
+}
+
+/* Pokémon Display */
+.poke-display {
+  position: relative;
+  min-height: 300px;
+  width: 100%;
+}
+
+#poke-mon {
+  max-width: 600px;
+  height: auto;
+  margin: 20px auto;
+  display: block;
+  filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.5));
+  animation: shake 0.5s ease-in-out; /* Shake when appearing */
+}
+
+/* Placeholder with Typewriter Effect */
+.placeholder {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+  font-family: "Pokemon Solid", sans-serif;
+  color: #fff;
+  text-shadow: 2px 2px 4px #333;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 10px 20px;
+  border-radius: 15px;
+  text-transform: uppercase;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typewriter 2s steps(20) infinite;
+}
+
+/* Pokémon Info with Glow Pulse */
+#poke-info {
+  display: none;
+  background: linear-gradient(
+    45deg,
+    var(--type-color, #ff3333),
+    rgba(255, 255, 255, 0.8)
+  );
+  padding: 20px;
+  border-radius: 15px;
+  max-width: 90%;
+  margin: 20px auto;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5),
+    inset 0 0 10px rgba(255, 255, 255, 0.3);
+  color: #fff;
+  font-family: "Pokemon Solid", sans-serif;
+  position: relative;
+  overflow: hidden;
+  animation: slideIn 0.5s ease-out, glowPulse 2s infinite alternate; /* Add glow pulse */
+}
+
+#poke-info::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  animation: shine 3s infinite;
+}
+
+#poke-info h2 {
+  color: #ffffff;
+  text-shadow: 2px 2px 4px #333;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+#poke-info p {
+  font-size: 16px;
+  margin: 10px 0;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 8px 15px;
+  border-radius: 10px;
+  display: inline-block;
+  transition: transform 0.2s;
+}
+
+#poke-info p:hover {
+  transform: scale(1.05);
+}
+
+/* Error Message Styling */
+#poke-info .error {
+  font-size: 20px;
+  color: #fff;
+  background: rgba(255, 51, 51, 0.9);
+  padding: 15px 20px;
+  border-radius: 10px;
+  text-shadow: 2px 2px 4px #000;
+  display: inline-block;
+}
+
+/* Loading Animation */
+.loading {
+  display: inline-block;
+  font-family: "Pokemon Solid", sans-serif;
+  animation: pulse 1s infinite;
+  text-transform: uppercase;
+}
+
+/* Responsive Design for Phones */
+@media (max-width: 600px) {
+  body {
+    padding: 10px;
+  }
+
+  h1 img {
+    max-width: 80%;
+  }
+
+  .search-container {
+    gap: 10px;
+  }
+
+  input {
+    max-width: 100%;
+    font-size: 14px;
+  }
+
+  button {
+    width: 150px;
+    font-size: 14px;
+  }
+
+  .poke-display {
+    min-height: 200px;
+  }
+
+  #poke-mon {
+    max-width: 100%;
+    max-height: 300px;
+  }
+
+  .placeholder {
+    font-size: 16px;
+    padding: 8px 15px;
+  }
+
+  #poke-info {
+    padding: 15px;
+  }
+
+  #poke-info h2 {
+    font-size: 20px;
+  }
+
+  #poke-info p {
+    font-size: 14px;
+  }
+
+  #poke-info .error {
+    font-size: 16px;
+    padding: 10px 15px;
+  }
+}
+
+/* New Keyframes */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(15deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  60% {
+    transform: translateY(10px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-10px);
+  }
+  50% {
+    transform: translateX(10px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes glowPulse {
+  0% {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5),
+      inset 0 0 10px rgba(255, 255, 255, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 30px rgba(var(--type-color-rgb, 255, 51, 51), 0.7),
+      inset 0 0 15px rgba(255, 255, 255, 0.5);
+  }
+}
+
+@keyframes typewriter {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* Existing Keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes shine {
+  0% {
+    left: -100%;
+  }
+  50% {
+    left: 100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
